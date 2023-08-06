@@ -11,7 +11,7 @@ buttonSelect.addEventListener("click", function(){
 // Allow drawing on click
 
 document.querySelector("body").addEventListener("click", function(e){
-    if(e.target.tagName != "BUTTON"){
+    if(e.target.tagName != "button"){
         click = !click;
         let draw = document.querySelector(`#draw`);
     }if(click){
@@ -21,7 +21,12 @@ document.querySelector("body").addEventListener("click", function(e){
 
     }
     
-})
+});
+
+
+document.querySelector("input[type='color']").addEventListener("change", function (e) {
+    setColor(this.value);
+});
 
 
 
@@ -61,19 +66,16 @@ function getSize(){
 }
 
 
-function colorDiv(){
 
-    if(click){
-        if(color == "random"){
-            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
-        }  else {
-            this.style.backgroundColor = "black"
+function colorDiv() {
+    if (click) {
+        if (color === "rainbow") {
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        } else {
+            this.style.backgroundColor = color;
         }
-
-
     }
-
-}
+};
 
 function setColor(colorChoice) {    
     color = colorChoice;
